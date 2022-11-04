@@ -1,3 +1,121 @@
+/* Default styles */
+
 body{
-    font-size: 12px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    color: #1A1818;
+}
+body p{
+    font-size: 18px;
+}
+body h1{
+    font-weight: 800;
+    font-size: 70px;
+    line-height: 120%;
+}
+body h3{
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 68px;
+}
+body h4{
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 150%;
+}
+
+
+/* Header styles */
+
+.header .container{
+    padding: 12px 20px;
+    max-height: 80px;
+}
+.header .logo-wrapper, .header .logo-wrapper img{
+    height: 100%;
+}
+.button{
+    background: #8C1429;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    padding: 0 32px;
+    min-height: 45px;
+    text-decoration: navajowhite;
+    color: #fff;
+}
+.button svg{
+    margin-left: 10px;
+}
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-wrapper .button{
+    margin-right: 50px;
+}
+.header-wrapper .nav{
+    display: flex;
+    align-items: center;
+}
+.header-wrapper .menu-burger{
+    height: 30px;
+}
+.header-wrapper .menu-burger > * {
+    height: 100%;
+}
+
+
+/* Other styles */
+
+
+.container{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.header-archive{
+    padding-top: 50px;
+    padding-bottom: 100px;
+    display: flex;
+    min-height: 400px;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-archive h1{
+    margin-bottom: 20px;
+}
+.header-archive > * {
+    flex: 1;
+}
+.archive-item h3{
+    margin-bottom: 34px;
+}
+.archive-item h4{
+    padding-top: 30px;
+}
+.archive-item{
+    display: flex;
+    padding-bottom: 100px;
+}
+.archive-item .short-description{
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+.archive-item .team-list{
+    display: inline-flex;
+    margin-top: 9px;
+}
+.archive-item .team-list li{
+    margin-right: 40px;
+    margin-left: 20px;
+}
+.archive-item .team-list li:last-child{
+    margin-right: 0;
+}
+.archive-item .description{
+    margin-top: 20px;
+    font-size: 16px;
 }

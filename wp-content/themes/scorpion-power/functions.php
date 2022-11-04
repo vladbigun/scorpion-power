@@ -39,6 +39,23 @@
  *
  * @since Scorpion Power 0.1
  */
+
+require_once get_template_directory() . '/inc/cases-post-type.php';
+require_once get_template_directory() . '/inc/expertize-post-type.php';
+
+add_theme_support('post-thumbnails');
+add_theme_support('title-tag');
+add_theme_support('custom-logo');
+add_theme_support('menus');
+
+register_nav_menus(array(
+    'header-nav' => 'Header',
+    'language-nav' => 'Language',
+    'footer-nav' => 'Footer Social Media',
+    'social-nav' => 'Social media',
+    'contact-nav' => 'Contacts menu',
+));
+
 function scorpion_power_register_styles() {
 
     $theme_version = wp_get_theme()->get( 'Version' );
@@ -57,3 +74,27 @@ function scorpion_power_register_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'scorpion_power_register_styles' );
+
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title'    => 'Theme General Settings',
+        'menu_title'    => 'Theme Settings',
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'      => false
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Theme Header Settings',
+        'menu_title'    => 'Header',
+        'parent_slug'   => 'theme-general-settings',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Theme Footer Settings',
+        'menu_title'    => 'Footer',
+        'parent_slug'   => 'theme-general-settings',
+    ));
+
+}

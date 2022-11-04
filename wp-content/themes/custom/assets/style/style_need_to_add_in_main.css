@@ -1,0 +1,77 @@
+.submit-btn {
+    font-family: 'Jost';
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.contact-us .form div {
+    position: relative;
+}
+
+.contact-us .form div.form_item {
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+
+.container form .form_error_message {
+    display: none;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    background: #FFFFFF;
+    color: #EC0030;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 5px 5px 5px 0;
+    border: 1px solid #EC0030;
+    padding-left: 15px;
+    bottom: 75%;
+    left: 50%;
+}
+
+.container form .form_error_message.show, form .form_error_message.show {
+    display: flex;
+}
+
+.container form .form_error_message.show_firstfield, form .form_error_message.show_firstfield {
+    top: -40px;
+    left: 30%;
+}
+
+.container form .form_error_message.show_secondfield, form .form_error_message.show_secondfield {
+    top: -40px;
+    left: 80%;
+}
+
+.container form .form_error_message.show_tshirdfield, form .form_error_message.show_thirdfield {
+    top: 20px;
+    left: 30%;
+}
+
+.container form .form_error_message.show_fourthfield, form .form_error_message.show_fourthfield {
+    top: 20px;
+    left: 80%;
+}
+
+.container form .form_error_message.show_message, form .form_error_message.show_message {
+    bottom: 50%;
+    left: 70%;
+}
+
+
+.container form .form_error_message::before, .container form .form_error_message::after, form .form_error_message::before, form .form_error_message::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    bottom: -20px;
+    border: 10px solid transparent;
+    border-top: 10px solid #EC0030;
+}
+
+.container form .form_error_message::after, form .form_error_message::after {
+    border-top: 10px solid white;
+    bottom: -19px;
+}
+
+
