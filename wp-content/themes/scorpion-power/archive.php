@@ -3,8 +3,8 @@
 <div class="container">
     <div class="header-archive">
         <div class="text">
-            <h1><?= post_type_archive_title() ?></h1>
-            <p><?= get_the_archive_description() ?></p>
+            <h1><?= pll__(post_type_archive_title()) ?></h1>
+            <p><?= pll__(get_the_archive_description()) ?></p>
         </div>
         <div class="img"></div>
     </div>

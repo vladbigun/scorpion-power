@@ -78,23 +78,26 @@ add_action( 'wp_enqueue_scripts', 'scorpion_power_register_styles' );
 if( function_exists('acf_add_options_page') ) {
 
     acf_add_options_page(array(
-        'page_title'    => 'Theme General Settings',
-        'menu_title'    => 'Theme Settings',
-        'menu_slug'     => 'theme-general-settings',
-        'capability'    => 'edit_posts',
-        'redirect'      => false
+        'page_title' => 'General Settings',
+        'menu_title' => 'General Theme Settings',
+        'menu_slug' => 'theme-settings',
+        'capability' => 'edit_posts',
+        'icon_url' => 'dashicons-admin-generic',
+        'redirect' => false
     ));
-
-    acf_add_options_sub_page(array(
-        'page_title'    => 'Theme Header Settings',
-        'menu_title'    => 'Header',
-        'parent_slug'   => 'theme-general-settings',
-    ));
-
-    acf_add_options_sub_page(array(
-        'page_title'    => 'Theme Footer Settings',
-        'menu_title'    => 'Footer',
-        'parent_slug'   => 'theme-general-settings',
-    ));
-
+    /*
+    $translations = pll_the_languages(array('raw' => 1));
+    foreach ($translations as $lang) {
+        $lang_name = $lang['name'];
+        $lang = $lang['slug'];
+        acf_add_options_sub_page([
+            'page_title' => "Settings - $lang_name",
+            'menu_title' => "Settings - $lang_name",
+            'menu_slug' => "options-page-${lang}",
+            'post_id' => 'options-' . $lang,
+            'parent' => 'theme-general-settings',
+        ]);
+    }
+    */
 }
+

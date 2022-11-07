@@ -20,7 +20,7 @@ function expertize_post_type() {
 
     $args = array(
         'label'               => __( 'cases', 'scorpion-power' ),
-        'description'         => __( 'We created a custom admin panel for the internet, communication, and SMS provider located in New Zealand and web and mobile applications for their clients. The admin panel manages the company’s services and products like SIP trunking, fibre broadband, etc. ', 'scorpion-power' ),
+        'description'         => __( 'cases_description' ),
         'labels'              => $labels,
         'supports'            => array( 'title', 'thumbnail', 'custom-fields'),
         'taxonomies'          => array( 'genres' ),

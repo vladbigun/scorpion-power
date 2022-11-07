@@ -36,7 +36,9 @@
             <div class="container">
                 <div class="header-wrapper">
                     <div class="logo-wrapper">
-                        <a href="/"><img src="<?= get_field('logo', 'option')['url'] ?> " alt=""></a>
+                        <a href="/">
+                            <img src="<?= get_field('logo', 'option')['url'] ?? '' ?> " alt="">
+                        </a>
                     </div>
                     <nav class="nav">
                         <a class="button" href="/contact-us">
