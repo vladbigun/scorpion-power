@@ -12,8 +12,8 @@ get_header();
 
     <main id="site-content">
         <div class="container" style="min-height: 64vh; display: flex; justify-content: center; flex-direction: column">
-            <h1 class="entry-title" style="margin-bottom: 30px"><?php _e( 'Page Not Found', 'twentytwenty' ); ?></h1>
-            <div class="intro-text"><p><?php _e( 'The page you were looking for could not be found. It might have been removed, renamed, or did not exist in the first place.', 'twentytwenty' ); ?></p></div>
+            <h1 class="entry-title" style="margin-bottom: 30px"><?= __( 'Page Not Found', 'scorpion-power' ); ?></h1>
+            <div class="intro-text"><p><?= __( 'The page you were looking for could not be found. It might have been removed, renamed, or did not exist in the first place.', 'scorpion-power' ); ?></p></div>
         </div>
     </main>
 
