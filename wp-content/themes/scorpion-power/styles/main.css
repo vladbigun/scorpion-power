@@ -94,33 +94,83 @@ body h4{
 .header-archive > * {
     flex: 1;
 }
-.archive-item h3{
-    margin-bottom: 34px;
-}
-.archive-item h4{
-    padding-top: 30px;
-}
-.archive-item{
+
+.archive-items.cases .archive-item {
     display: flex;
     padding-bottom: 100px;
 }
-.archive-item .short-description{
+.archive-items.cases .archive-item h3{
+    margin-bottom: 34px;
+}
+.archive-items.cases .archive-item h4{
+    padding-top: 30px;
+}
+
+.archive-items.cases .archive-item .short-description{
     margin-bottom: 30px;
     font-size: 16px;
 }
-.archive-item .team-list{
+.archive-items.cases .archive-item .team-list{
     display: inline-flex;
     flex-wrap: wrap;
     margin-top: 9px;
 }
-.archive-item .team-list li{
+.archive-items.cases .archive-item .team-list li{
     margin-right: 40px;
     margin-left: 20px;
 }
-.archive-item .team-list li:last-child{
+.archive-items.cases .archive-item .team-list li:last-child{
     margin-right: 0;
 }
-.archive-item .description{
+.archive-items.cases .archive-item .description{
     margin-top: 20px;
     font-size: 16px;
+}
+
+
+
+/* Default archive styles */
+
+.archive-items.default{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.archive-items.default .archive-item{
+    box-sizing: border-box;
+    width: 50%;
+}
+.archive-items.default .archive-item .img{
+    height: 300px;
+}
+.archive-items.default .archive-item .img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    filter: drop-shadow(0px 0px 31px rgba(188, 188, 188, 0.2));
+}
+.archive-items.default .archive-item:nth-child(2n+1){
+    padding-right: 65px;
+    padding-bottom: 70px;
+}
+.archive-items.default .archive-item:nth-child(2n){
+    padding-left: 65px;
+    padding-top: 70px;
+}
+.archive-items.default .item-content{
+    padding-top: 20px;
+}
+.archive-items.default .archive-item .description{
+    margin-top: 15px;
+    font-size: 16px;
+}
+@media (max-width: 800px) {
+    .archive-items.default{
+        flex-direction: column;
+    }
+    .archive-items.default .archive-item{
+        padding: 0!important;
+        padding-bottom: 50px!important;
+        width: 100%;
+    }
 }

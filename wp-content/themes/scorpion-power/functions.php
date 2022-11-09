@@ -42,6 +42,7 @@
 
 require_once get_template_directory() . '/inc/cases-post-type.php';
 require_once get_template_directory() . '/inc/expertize-post-type.php';
+require_once get_template_directory() . '/inc/services-post-type.php';
 
 add_theme_support('post-thumbnails');
 add_theme_support('title-tag');

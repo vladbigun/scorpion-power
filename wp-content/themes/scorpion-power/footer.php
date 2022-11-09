@@ -117,7 +117,9 @@ $menu_items = wp_get_nav_menu_items($menu->term_id, array('order' => 'DESC')) ??
                 <div class="top-footer">
                     <div class="container">
                         <div class="wrapper-footer">
-                            <img class="logo" src="<?= get_field('logo', 'option')['url'] ?? '' ?> " alt="">
+                            <a href="/">
+                                <img class="logo" src="<?= get_field('logo', 'option')['url'] ?? '' ?> " alt="">
+                            </a>
                             <ul class="wrapper-menu">
                                 <?php foreach ($menu_items as $item):?>
                                     <li class="menu-item">

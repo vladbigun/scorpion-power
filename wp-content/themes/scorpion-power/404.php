@@ -11,16 +11,11 @@ get_header();
 ?>
 
     <main id="site-content">
-
-        <div class="section-inner thin error404-content">
-
-            <h1 class="entry-title"><?php _e( 'Page Not Found', 'twentytwenty' ); ?></h1>
-
+        <div class="container" style="min-height: 64vh; display: flex; justify-content: center; flex-direction: column">
+            <h1 class="entry-title" style="margin-bottom: 30px"><?php _e( 'Page Not Found', 'twentytwenty' ); ?></h1>
             <div class="intro-text"><p><?php _e( 'The page you were looking for could not be found. It might have been removed, renamed, or did not exist in the first place.', 'twentytwenty' ); ?></p></div>
-
-        </div><!-- .section-inner -->
-
-    </main><!-- #site-content -->
+        </div>
+    </main>
 
 <?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
 
