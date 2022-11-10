@@ -13,10 +13,9 @@
 
 
 $locations = get_nav_menu_locations();
-$menu = wp_get_nav_menu_object($locations['header-nav']); //menu-de
+$menu = wp_get_nav_menu_object($locations['header-nav']);
 $menu_items = wp_get_nav_menu_items($menu->term_id, array('order' => 'DESC')) ?? [];
-///echo "<pre>";
-//var_dump($menu_items);
+
 ?>
 <style>
     .wrapper-footer{
@@ -63,6 +62,7 @@ $menu_items = wp_get_nav_menu_items($menu->term_id, array('order' => 'DESC')) ??
     .top-footer .wrapper-menu{
         display: flex;
         align-self: center;
+        flex-wrap: wrap;
     }
     .footer .bottom-footer .wrapper-footer{
         min-height: 50px;

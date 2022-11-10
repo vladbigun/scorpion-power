@@ -63,8 +63,14 @@ function scorpion_power_register_styles() {
 
     wp_enqueue_style( 'scorpion_power-style', get_theme_file_uri() . '/styles/main.css', array(), $theme_version );
     wp_enqueue_style( 'scorpion_power-main', get_stylesheet_uri(), array(), $theme_version );
-
     wp_style_add_data( 'scorpion_power-style', 'rtl', 'replace' );
+
+    wp_deregister_script('jquery');
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js');
+    wp_enqueue_script('jquery');
+
+    wp_enqueue_script('swiper-script', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', array(), '', false);
+    wp_enqueue_script( 'scorpion_power-js-main', get_template_directory_uri() . '/js/main.js');
 
     // Add output of Customizer settings as inline style.
   //  wp_add_inline_style( 'scorpion_power-style', twentytwenty_get_customizer_css( 'front-end' ) );
@@ -75,6 +81,7 @@ function scorpion_power_register_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'scorpion_power_register_styles' );
+
 
 if( function_exists('acf_add_options_page') ) {
 
