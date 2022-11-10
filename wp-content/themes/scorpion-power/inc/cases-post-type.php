@@ -1,5 +1,5 @@
 <?php
-function expertize_post_type() {
+function cases_post_type() {
 
 // Set UI labels for Custom Post Type
     $labels = array(
@@ -32,7 +32,7 @@ function expertize_post_type() {
         'show_in_admin_bar'   => true,
         'menu_position'       => 5,
         'can_export'          => true,
-        'has_archive'         => true,
+        'has_archive'         => false,
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'capability_type'     => 'post',
@@ -40,7 +40,7 @@ function expertize_post_type() {
 
     );
 
-    register_post_type( 'cases', $args );
+    register_post_type( 'cases_post', $args );
 }
 add_theme_support( 'post-thumbnails' );
 /* Hook into the 'init' action so that the function
@@ -48,7 +48,7 @@ add_theme_support( 'post-thumbnails' );
 * unnecessarily executed.
 */
 
-add_action( 'init', 'expertize_post_type', 0 );
+add_action( 'init', 'cases_post_type', 0 );
 
 if( function_exists('acf_add_options_page') ) {
 

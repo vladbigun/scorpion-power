@@ -1,5 +1,5 @@
 <?php
-function cases_post_type() {
+function expertize_post_type() {
 
 // Set UI labels for Custom Post Type
     $labels = array(
@@ -32,7 +32,7 @@ function cases_post_type() {
         'show_in_admin_bar'   => true,
         'menu_position'       => 5,
         'can_export'          => true,
-        'has_archive'         => true,
+        'has_archive'         => false,
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'capability_type'     => 'post',
@@ -40,11 +40,11 @@ function cases_post_type() {
 
     );
 
-    register_post_type( 'expertize', $args );
+    register_post_type( 'expertizes_post', $args );
 
 }
 
-add_action( 'init', 'cases_post_type', 0 );
+add_action( 'init', 'expertize_post_type', 0 );
 
 if( function_exists('acf_add_options_page') ) {
 

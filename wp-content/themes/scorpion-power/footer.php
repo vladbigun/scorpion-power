@@ -17,102 +17,7 @@ $menu = wp_get_nav_menu_object($locations['header-nav']);
 $menu_items = wp_get_nav_menu_items($menu->term_id, array('order' => 'DESC')) ?? [];
 
 ?>
-<style>
-    .wrapper-footer{
-        display: flex;
-        justify-content: space-between;
-    }
-    .wrapper-footer .logo{
-        height: 50px;
-    }
-    .wrapper-footer a{
-        text-decoration: none;
-        color: #1A1818;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 150%;
-        text-transform: uppercase;
-    }
-    .wrapper-footer .menu-item{
-        padding: 0 25px;
-        list-style-type: none;
-    }
 
-    .contact-info a{
-        display: flex;
-        align-items: center;
-        color: #1A1818;
-        font-weight: 800;
-        justify-content: end;
-        margin-bottom: 8px;
-    }
-    .contact-info a:last-child{
-        margin-bottom: 0;
-    }
-    .contact-info a > span{
-        margin-left: 5px;
-        text-transform: none;
-    }
-    .footer .top-footer{
-        padding-top: 25px;
-        padding-bottom: 20px;
-        margin-top: 50px;
-        border: 1px solid #E6E6E6;
-    }
-    .top-footer .wrapper-menu{
-        display: flex;
-        align-self: center;
-        flex-wrap: wrap;
-    }
-    .footer .bottom-footer .wrapper-footer{
-        min-height: 50px;
-        align-items: center;
-    }
-    .bottom-footer .other-links a{
-        margin-left: 30px;
-    }
-    .bottom-footer .social-links{
-        display: flex;
-        align-items: center;
-    }
-    .bottom-footer .social-links a{
-        display: block;
-        height: 18px;
-    }
-    .bottom-footer .social-links img{
-        height: 100%;
-        margin: 0 16px;
-    }
-    @media (max-width: 800px) {
-        .wrapper-footer a{
-            font-size: 14px;
-        }
-        .wrapper-footer .logo{
-            height: 34px;
-        }
-        .top-footer .wrapper-menu{
-            display: none;
-        }
-        .footer .bottom-footer .wrapper-footer{
-            flex-direction: column-reverse;
-        }
-        .bottom-footer .social-links{
-            display: none;
-        }
-        .bottom-footer .other-links{
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            padding: 20px 0;
-        }
-        .bottom-footer .other-links a{
-            margin-left: unset;
-        }
-        .bottom-footer{
-            padding-bottom: 25px;
-        }
-    }
-</style>
 			<footer id="site-footer" class="footer">
                 <div class="top-footer">
                     <div class="container">
@@ -130,12 +35,14 @@ $menu_items = wp_get_nav_menu_items($menu->term_id, array('order' => 'DESC')) ??
                             <div class="contact-info">
                                 <?php $contacts_info = get_field('contact_info', 'option'); ?>
                                 <?php foreach ($contacts_info as $contact):?>
+                                    <?php if($contact['type'] != 'map') :?>
                                     <a href="<?= $contact['type'] ?>:<?= $contact['text'] ?>">
                                         <img src="<?= $contact['icon'] ?>" alt="">
                                         <span>
                                         <?= $contact['text'] ?>
                                     </span>
                                     </a>
+                                    <?php endif; ?>
                                 <?php endforeach;?>
                             </div>
                         </div>

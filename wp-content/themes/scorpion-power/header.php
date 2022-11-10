@@ -94,12 +94,15 @@ $langs_array = pll_the_languages(array('raw' => 1));
                         </a>
                     </div>
                     <nav class="nav">
-                        <a class="button contact" href="/contact-us">
-                            <span>Contact Us</span>
-                            <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.5 7.5L8.20711 6.79289L8.91421 7.5L8.20711 8.20711L7.5 7.5ZM2.20711 0.792894L8.20711 6.79289L6.79289 8.20711L0.792893 2.20711L2.20711 0.792894ZM8.20711 8.20711L2.20711 14.2071L0.792894 12.7929L6.79289 6.79289L8.20711 8.20711Z" fill="white"/>
-                            </svg>
-                        </a>
+                        <?php if(get_field('header_button', 'option')): ?>
+                            <a class="button contact" href="<?= get_field('header_button', 'option')['url'] ?>">
+                                <span><?= get_field('header_button', 'option')['title'] ?></span>
+
+                                <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.5 7.5L8.20711 6.79289L8.91421 7.5L8.20711 8.20711L7.5 7.5ZM2.20711 0.792894L8.20711 6.79289L6.79289 8.20711L0.792893 2.20711L2.20711 0.792894ZM8.20711 8.20711L2.20711 14.2071L0.792894 12.7929L6.79289 6.79289L8.20711 8.20711Z" fill="white"/>
+                                </svg>
+                            </a>
+                        <?php endif;?>
                         <div class="menu-burger main">
                             <svg width="35" height="29" viewBox="0 0 35 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="35" height="3" fill="#1A1818"/>
@@ -112,5 +115,35 @@ $langs_array = pll_the_languages(array('raw' => 1));
             </div>
 		</header>
 
+        <div class="container">
+            <div class="header-main">
+                <div class="text">
+                    <h1><?= get_field('page_title') ?></h1>
+                    <p><?= get_field('page_description') ?></p>
+                    <?php if(get_field('page_button')):?>
+                        <a class="button" href="<?= get_field('page_button')['url'] ?>">
+                            <?= get_field('page_button')['title'] ?>
+                        </a>
+                    <?php endif;?>
+                    <?php if(get_field('page_contact_active')):?>
+                    <div class="contact-info">
+                        <?php $contacts_info = get_field('contact_info', 'option'); ?>
+                        <?php foreach ($contacts_info as $contact):?>
+                            <a href="<?= $contact['type'] ?>:<?= $contact['text'] ?>">
+                                <img src="<?= $contact['icon'] ?>" alt="">
+                                <span>
+                                        <?= $contact['text'] ?>
+                                    </span>
+                            </a>
+                        <?php endforeach;?>
+                    </div>
+                    <?php endif;?>
+                </div>
+                <div class="img">
+                    <img src="<?= get_field('page_video') ?>" alt="">
+                </div>
+
+            </div>
+        </div>
 		<?php
 
