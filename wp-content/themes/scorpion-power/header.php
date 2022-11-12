@@ -65,10 +65,16 @@ $langs_array = pll_the_languages(array('raw' => 1));
                             </div>
                         </nav>
                     </div>
+
                     <div class="header-bottom">
+                        <img class="default-menu-img" src="<?= get_field('default_menu_img', 'option')['url'] ?> " alt="">
+
                         <?php foreach ($menu_items as $item):?>
                             <div class="menu-item">
-                                <a href="<?= $item->url ?>" title="<?= $item->title ?>"><?= $item->title ?></a>
+                                <?php if(get_field('image', $item)): ?>
+                                    <img class="img" src="<?= get_field('image', $item)['url'] ?> " alt="">
+                                <?php endif;?>
+                                <a class="link" href="<?= $item->url ?>" title="<?= $item->title ?>"><?= $item->title ?></a>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -115,35 +121,6 @@ $langs_array = pll_the_languages(array('raw' => 1));
             </div>
 		</header>
 
-        <div class="container">
-            <div class="header-main">
-                <div class="text">
-                    <h1><?= get_field('page_title') ?></h1>
-                    <p><?= get_field('page_description') ?></p>
-                    <?php if(get_field('page_button')):?>
-                        <a class="button" href="<?= get_field('page_button')['url'] ?>">
-                            <?= get_field('page_button')['title'] ?>
-                        </a>
-                    <?php endif;?>
-                    <?php if(get_field('page_contact_active')):?>
-                    <div class="contact-info">
-                        <?php $contacts_info = get_field('contact_info', 'option'); ?>
-                        <?php foreach ($contacts_info as $contact):?>
-                            <a href="<?= $contact['type'] ?>:<?= $contact['text'] ?>">
-                                <img src="<?= $contact['icon'] ?>" alt="">
-                                <span>
-                                        <?= $contact['text'] ?>
-                                    </span>
-                            </a>
-                        <?php endforeach;?>
-                    </div>
-                    <?php endif;?>
-                </div>
-                <div class="img">
-                    <img src="<?= get_field('page_video') ?>" alt="">
-                </div>
 
-            </div>
-        </div>
 		<?php
 

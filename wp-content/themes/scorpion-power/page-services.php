@@ -1,4 +1,7 @@
-<?php get_header() ?>
+<?php
+get_header() ;
+require_once get_template_directory() . '/inc/component/header-page.php';
+?>
 <?php
 $args = [
     'post_type' => 'services_post'
@@ -23,4 +26,7 @@ $the_query = new WP_Query( $args );
         </div>
     </div>
 
-<?php get_footer() ?>
+<?php
+require_once get_template_directory() . '/inc/component/footer-page.php';
+get_footer()
+?>

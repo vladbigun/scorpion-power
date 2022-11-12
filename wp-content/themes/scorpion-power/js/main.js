@@ -7,7 +7,7 @@ jQuery(function($) {
             $('body').css({'overflow': 'auto'})
             setTimeout(function () {
                 header.removeClass('active')
-            }, 800);
+            }, 600);
         } else{
             header.addClass('active')
             setTimeout(function () {
