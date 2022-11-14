@@ -191,8 +191,8 @@ require_once get_template_directory() . '/inc/component/header-page.php';
                                     <div class="item-content">
                                         <h4><?= get_the_title() ?></h4>
                                         <p class="description"><?= get_field('description', get_the_ID()) ?> </p>
-                                        <?php if(get_field('expertize_more_link')):?>
-                                            <a href="<?= get_field('expertize_more_link')['url'] ?>">
+                                        <?php if( $archive['more_link'] && !get_field('image_icon')):?>
+                                            <a href="<?=  $archive['more_link']['url'] ?>">
                                                 <span><?= __('More')?></span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
                                                     <path d="M7 7L7.70711 6.29289L8.41421 7L7.70711 7.70711L7 7ZM1.70711 0.292894L7.70711 6.29289L6.29289 7.70711L0.292893 1.70711L1.70711 0.292894ZM7.70711 7.70711L1.70711 13.7071L0.292894 12.2929L6.29289 6.29289L7.70711 7.70711Z" fill="#1A1818"/>
@@ -221,7 +221,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
             </div>
         </div>
      <?php endforeach;?>
-
+</div>
 
 <?php
 require_once get_template_directory() . '/inc/component/footer-page.php';
