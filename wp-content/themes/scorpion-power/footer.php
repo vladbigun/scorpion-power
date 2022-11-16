@@ -16,6 +16,9 @@ $locations = get_nav_menu_locations();
 $menu = wp_get_nav_menu_object($locations['header-nav']);
 $menu_items = wp_get_nav_menu_items($menu->term_id, array('order' => 'DESC')) ?? [];
 
+
+$menu_footer = wp_get_nav_menu_object($locations['footer-nav']);
+$menu_footer_items = wp_get_nav_menu_items($menu_footer->term_id, array('order' => 'DESC')) ?? [];
 ?>
 
 			<footer id="site-footer" class="footer">
@@ -63,8 +66,9 @@ $menu_items = wp_get_nav_menu_items($menu->term_id, array('order' => 'DESC')) ??
                                 <?php endforeach;?>
                             </div>
                             <div class="other-links">
-                                <a href="">Imprint</a>
-                                <a href="/privacy-policy">PRIVACY POLICY</a>
+                                <?php foreach ($menu_footer_items as $item):?>
+                                    <a href="<?= $item->url ?>" title="<?= $item->title ?>"><?= $item->title ?></a>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

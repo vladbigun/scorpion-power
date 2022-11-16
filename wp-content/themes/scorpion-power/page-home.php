@@ -10,152 +10,6 @@ require_once get_template_directory() . '/inc/component/header-page.php';
 ?>
 
 
-<style>
-    .archive-items-main{
-
-    }
-    .archive-items-main .archive-item-wrapper{
-        padding-right: 30px;
-        box-sizing: border-box;
-    }
-    .archive-items-main .archive-item{
-        display: flex;
-        box-shadow: 0px 0px 31px rgba(188, 188, 188, 0.2);
-        border-radius: 10px;
-    }
-    .archive-items-main .item-content{
-        padding: 30px;
-    }
-
-    .archive-items-main .item-content h4{
-        font-size: 24px;
-    }
-    .archive-items-main .item-content p{
-        font-size: 14px;
-        max-height: 170px;
-        overflow: hidden;
-    }
-    .archive-items-main .item-content a{
-        font-size: 16px;
-        color: #1A1818;
-        text-decoration: unset;
-        margin-top: 30px;
-        display: flex;
-        align-items: center;
-        font-weight: 800;
-    }
-    .archive-items-main .item-content a svg{
-        margin-left: 10px;
-    }
-    .archive-items-main .archive-item .img{
-        overflow: hidden;
-        width: 210px;
-        min-height: 267px;
-        display: flex;
-        justify-content: center;
-        border-radius: 10px;
-    }
-    .archive-items-main .archive-item img{
-        height: 100%;
-    }
-
-    .navigation-wrapper{
-        margin-top: 46px;
-        display: flex;
-        align-items: center;
-    }
-    .navigation-wrapper .pagination{
-        position: relative;
-        display: flex;
-        align-items: center;
-        width: unset;
-        right: unset;
-        left: unset;
-        top: unset;
-        bottom: unset;
-        padding: 0 30px;
-    }
-    .button-next, .button-prev{
-        display: flex;
-        cursor: pointer;
-        align-items: center;
-    }
-    .swiper-pagination-bullet{
-        background: #1A1818;
-        opacity: 0.5;
-        width: 5px;
-        height: 5px;
-    }
-    .swiper-pagination-bullet-active{
-        opacity: 1;
-        width: 9px;
-        height: 9px;
-    }
-    .swiper-button-disabled{
-        opacity: 0.5;
-        cursor: unset;
-    }
-    .wrapper-main-archives{
-        padding-top: 100px;
-        padding-bottom: 50px;
-    }
-    .wrapper-main-archives .content-archive p{
-        margin-top: 20px;
-        max-width: 50%;
-    }
-
-    .wrapper-main-archives .content-archive .button{
-        margin-top: 30px;
-    }
-    .wrapper-main-archives .content-archive{
-        padding-bottom: 40px;
-    }
-
-    .archive-items-main .archive-item.image-icon{
-        box-shadow: unset;
-        border-radius: unset;
-    }
-    .archive-items-main .archive-item.vertical{
-        flex-direction: column;
-    }
-    .archive-items-main .archive-item.vertical .img{
-        width: 100%;
-        min-height: 200px;
-        max-height: 200px;
-    }
-
-    .archive-items-main .archive-item.image-icon .img{
-        overflow: unset;
-        max-width: 90px;
-        min-height: 90px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #fff;
-        box-shadow: 0px 0px 31px rgba(188, 188, 188, 0.2);
-        border-radius: 10px;
-    }
-    .archive-items-main .archive-item.image-icon .item-content{
-        padding: 20px 0;
-    }
-    @media (max-width: 800px) {
-        .archive-items-main .archive-item{
-            flex-direction: column;
-        }
-        .archive-items-main .archive-item .img{
-            width: unset;
-            display: block;
-            justify-content: unset;
-            max-height: 178px;
-        }
-        .archive-items-main .item-content{
-            padding: 30px 15px;
-        }
-        .archive-items-main .item-content a{
-            margin-top: 15px;
-        }
-    }
-</style>
 <div class="container">
     <?php foreach (get_field('archives') as $archive): ?>
         <?php
@@ -174,8 +28,8 @@ require_once get_template_directory() . '/inc/component/header-page.php';
                         </a>
                     <?php endif;?>
                 </div>
+                <?php if ($the_query_expertize->have_posts()) :?>
                 <div class="archive-items-main swiper-wrapper">
-                    <?php if ($the_query_expertize->have_posts()) :?>
                         <?php while ($the_query_expertize->have_posts()) : $the_query_expertize->the_post() ?>
                             <div class="archive-item-wrapper swiper-slide">
                                 <div class="archive-item <?=  $archive['type_position'] ?> <?= get_field('image_icon') ? 'image-icon' : '' ?>">
@@ -203,7 +57,6 @@ require_once get_template_directory() . '/inc/component/header-page.php';
                                 </div>
                             </div>
                         <?php endwhile; ?>
-                    <?php endif; ?>
                 </div>
                 <div class="navigation-wrapper">
                     <div class="button-prev">
@@ -218,6 +71,9 @@ require_once get_template_directory() . '/inc/component/header-page.php';
                         </svg>
                     </div>
                 </div>
+                <?php else: ?>
+                <h4><?= __('No post from this post type') ?></h4>
+                <?php endif; ?>
             </div>
         </div>
      <?php endforeach;?>

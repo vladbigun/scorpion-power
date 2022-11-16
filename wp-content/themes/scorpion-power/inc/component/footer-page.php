@@ -1,4 +1,4 @@
-<div class="container" style="padding-top: 70px;">
+<div class="container">
     <div class="header-main">
         <div class="text">
             <h1><?= get_field('page_footer_title', 'option') ?></h1>
