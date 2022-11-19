@@ -29,6 +29,7 @@ $items = get_field('items') ?: [];
         .scorpion-contact-form__field input{
             width: 100%;
             height: 50px;
+            padding: 0 15px;
             border: 1px solid #AEAEAE;
             border-radius: 5px;
             font-weight: 400;
@@ -51,6 +52,7 @@ $items = get_field('items') ?: [];
         .button.submit{
             background: #8C1429;
             margin-top: 30px;
+            min-width: 160px;
         }
         @media (max-width: 800px) {
             .scorpion-contact-form__fields-wrapper{
@@ -69,26 +71,42 @@ $items = get_field('items') ?: [];
         }
     </style>
 <script>
-    jQuery('.scorpion-contact-form').on('submit', '.scorpion-contact-form__form', (e) => {
-        e.preventDefault()
-        console.log('submit')
-        jQuery('.scorpion-contact-form__fields-wrapper input').map((item) => {
-            console.log(item)
-        })
-    })
+    jQuery(document).ready(function($) {
+        $('.scorpion-contact-form form').on('submit', function(e){
+            e.preventDefault();
+            let fields = [];
+            jQuery('.scorpion-contact-form__fields-wrapper input').map((index, item) => {
+                fields.push({
+                    'name' : $(item).attr('placeholder'),
+                    'value' : $(item).val()
+                })
+            })
+            let request = $.ajax({
+                type: 'POST',
+                data : {
+                    action : 'action_api_contact_form',
+                    fields : fields
+                },
+                url: '<?= admin_url('admin-ajax.php') ?>'
+            });
+            request.done(function(msg) {
+                console.log('done', msg)
+            });
+        });
+    });
 </script>
 <div class="scorpion-contact-form">
     <div class="column">
-        <form class="scorpion-contact-form__form" action="/">
+        <form class="scorpion-contact-form__form" action="" type="post">
             <div class="scorpion-contact-form__fields-wrapper">
                 <?php foreach ($items as $item):?>
                     <div class="scorpion-contact-form__field">
                         <label for="<?= $item['name'] ?>"><?= $item['label'] ?></label>
-                        <input type="text" name="<?= $item['name'] ?>">
+                        <input type="text" name="<?= $item['name'] ?>" placeholder="<?= $item['content'] ?>">
                     </div>
                 <?php endforeach; ?>
             </div>
-            <input type="submit" class="button submit">
+            <input type="submit" class="button submit" value="<?= pll__('Send') ?>">
         </form>
     </div>
     <div class="column">

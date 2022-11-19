@@ -45,6 +45,8 @@ require_once get_template_directory() . '/inc/expertize-post-type.php';
 require_once get_template_directory() . '/inc/services-post-type.php';
 require_once get_template_directory() . '/inc/technologies-post-type.php';
 
+require_once get_template_directory() . '/inc/api/contact_form.php';
+
 require_once get_template_directory() . '/inc/component/block/default_block.php';
 
 
@@ -80,7 +82,7 @@ function scorpion_power_register_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'scorpion_power_register_styles' );
-
+wp_localize_script( 'scorpion_power-js-main', 'scorpion_api', array( 'ajax_url' => admin_url('admin-ajax.php')) );
 
 if( function_exists('acf_add_options_page') ) {
 
@@ -141,3 +143,4 @@ function my_acf_block_render_callback( $block, $content = '', $is_preview = fals
     }
 
 }
+
