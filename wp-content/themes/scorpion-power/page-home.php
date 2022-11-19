@@ -2,21 +2,33 @@
 <?php
 get_header();
 require_once get_template_directory() . '/inc/component/header-page.php';
+
+$archives = get_field('archives') ;
 ?>
-
-<?php
-//the_widget('left_archive')
-
-?>
-
 
 <div class="container">
-    <?php foreach (get_field('archives') as $archive): ?>
+    <?php if($archives):?>
+    <?php foreach ($archives as $archive): ?>
+        <?php
+        if($archive['post_type'] == 'technologies_post'){
+            get_template_part( 'template-parts/general_block', null, [
+                'title' => $archive['title'],
+                'description' => $archive['description'],
+                'button' => false,
+            ] );
+            get_template_part( 'template-parts/post_type_render', null, [
+                'post_type' => 'technologies_post',
+            ] );
+            continue;
+        }
+        ?>
+
         <?php
         $the_query_expertize = new WP_Query( [
             'post_type' => $archive['post_type']
         ] );
         ?>
+
         <div class="wrapper-main-archives">
             <div class="swiper archive-<?=$archive['post_type']?>" data-item="<?= $archive['item_count'] ?? '2'?>" data-type="<?=$archive['post_type']?>">
                 <div class="content-archive">
@@ -77,6 +89,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
             </div>
         </div>
      <?php endforeach;?>
+    <?php endif;?>
 </div>
 
 <?php

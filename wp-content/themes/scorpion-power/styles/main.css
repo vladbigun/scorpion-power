@@ -65,6 +65,7 @@ body h4{
     box-sizing: border-box;
     text-decoration: none;
     color: #fff;
+    border: unset;
 }
 
 .button.contact{
@@ -610,7 +611,7 @@ body h4{
     max-height: 200px;
 }
 
-.archive-items-main .archive-item.image-icon .img{
+.archive-items-main .archive-item.image-icon .img, .powerful_item .img{
     overflow: unset;
     max-width: 90px;
     min-height: 90px;
@@ -647,4 +648,50 @@ body h4{
     .wrapper-main-archives .content-archive p{
         max-width: unset;
     }
+}
+.powerful_items{
+    display: flex;
+}
+.powerful_item {
+    max-width: 240px;
+    margin-top: 40px;
+}
+.powerful_item .name {
+    font-weight: 800;
+    font-size: 16px;
+    display: block;
+    line-height: 22px;
+    margin-top: 20px;
+}
+.padding-d{
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+
+.block-list{
+    margin-top: 15px;
+    display: flex;
+}
+.block-list .item:before{
+    content: '•';
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+.block-list.horizontal .item:first-child:before{
+    content: '';
+    display: none;
+}
+.block-list .item{
+    margin-right: 20px;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 22px;
+}
+.block-list.vertical{
+    flex-direction: column;
+}
+.block-list.vertical .item {
+    margin-bottom: 15px;
 }

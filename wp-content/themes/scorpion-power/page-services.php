@@ -18,8 +18,23 @@ $the_query = new WP_Query( $args );
                         </div>
                         <div class="item-content">
                             <h4><?= get_the_title() ?></h4>
+                            <?php if(get_field('position_list') == 'top' && get_field('list')): ?>
+                                <div class="block-list horizontal">
+                                    <?php foreach (get_field('list')  as $team):?>
+                                        <div class="item"><?= $team['name'] ?></div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                             <p class="description"><?= get_field('description', get_the_ID()) ?> </p>
+                            <?php if(get_field('position_list') == 'bottom' && get_field('list')): ?>
+                                <div class="block-list horizontal">
+                                    <?php foreach (get_field('list')  as $team):?>
+                                        <div class="item"><?= $team['name'] ?></div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
+
                     </div>
                 <?php endwhile; ?>
             <?php endif; ?>

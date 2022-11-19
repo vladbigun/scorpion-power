@@ -46,11 +46,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
     $('.swiper').each((index, item) => {
         console.log($(item).attr('data-item'))
         config.breakpoints = {
-            800: {
+            1: {
                 slidesPerView: 1,
+                spaceBetween: 0,
             },
-            1400: {
+            800: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1000: {
                 slidesPerView: $(item).attr('data-item'),
+                spaceBetween: 30,
             }
         }
         new Swiper('.archive-' + $(item).attr('data-type'), config);
