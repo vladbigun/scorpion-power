@@ -4,7 +4,8 @@ require_once get_template_directory() . '/inc/component/header-page.php';
 ?>
 <?php
 $args = [
-        'post_type' => 'cases_post'
+    'posts_per_page' => 50,
+    'post_type' => 'cases_post'
 ];
 $the_query = new WP_Query( $args );
 ?>

@@ -10,6 +10,7 @@
 get_header();
 require_once get_template_directory() . '/inc/component/header-page.php';
 ?>
+
 <div class="container">
     <?php
     if ( have_posts() ) {

@@ -121,7 +121,9 @@ function my_register_blocks()
             'title' => __('Scorpion Contact Form'),
             'description' => __('A custom Scorpion Contact Form.'),
             'render_callback' => 'acf_block_scorpion_contact_form',
-            'render_template'   => get_template_directory() . '/template-parts/block/contact_form/contact_form.php',
+            'enqueue_script' => get_template_directory_uri() . '/template-parts/blocks/contact_form/contact_form.js',
+            'render_template'   => get_template_directory() . '/template-parts/blocks/contact_form/contact_form.php',
+            'enqueue_style' => get_template_directory_uri() . '/template-parts/blocks/contact_form/contact_form.css',
             'category' => 'formatting',
         ));
     }
@@ -144,3 +146,8 @@ function my_acf_block_render_callback( $block, $content = '', $is_preview = fals
 
 }
 
+add_action( 'after_setup_theme', 'misha_gutenberg_css' );
+function misha_gutenberg_css(){
+    add_theme_support( 'editor-styles' ); // if you don't add this line, your stylesheet won't be added
+    add_editor_style( 'styles/style-editor.css' ); // tries to include style-editor.css directly from your theme folder
+}

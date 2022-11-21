@@ -4,6 +4,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
 ?>
 <?php
 $args = [
+    'posts_per_page' => 50,
     'post_type' => 'expertizes_post'
 ];
 $the_query = new WP_Query( $args );

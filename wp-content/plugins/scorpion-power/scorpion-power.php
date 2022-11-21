@@ -36,31 +36,12 @@ function get_error_lang($lang_teg){
 }
 
 include_once SPACE_IT_TEMPLATE_PATH . 'widgets/DefaultScorpionWidget.php';
+include_once SPACE_IT_TEMPLATE_PATH . 'includes/acf-lang-text/init.php';
 
-function kinsta_register_widgets() {
-
-    register_sidebar( array(
-        'name' => __( 'After Content Widget Area', 'kinsta' ),
-        'id' => 'after-content-widget-area',
-        'description' => __( 'Widget area after the content', 'kinsta' ),
-        'before_widget' => '
- 
-<div id="%1$s" class="widget-container %2$s">',
-        'after_widget' => '</div>
- 
- 
-',
-        'before_title' => '
- 
-<h3 class="widget-title">',
-        'after_title' => '</h3>
- 
- 
-',
-
-    ) );
-
+if(!function_exists('tf_acf_lang_get_field')){
+    function tf_acf_lang_get_field($selector, $post_id = false, $format_value = true){
+        $lang_text_array = get_field($selector, $post_id, $format_value);
+        return $lang_text_array[pll_current_language()] ?? $lang_text_array;
+    }
 }
-
-add_action( 'widgets_init', 'kinsta_register_widgets' );
 ?>

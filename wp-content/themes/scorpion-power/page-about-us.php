@@ -14,6 +14,46 @@ require_once get_template_directory() . '/inc/component/header-page.php';
         .archive-powerful .swiper-wrapper{
             justify-content: space-between;
         }
+        .why_as_wrapper{
+            display: flex;
+        }
+        .why_as_wrapper p{
+            padding-top: 20px;
+        }
+        .why_as_wrapper .content{
+            width: 60%;
+        }
+        .why_as_wrapper .img{
+            padding-left: 116px;
+            width: 40%;
+        }
+        .why_as_wrapper .content span{
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 150%;
+            padding-top: 30px;
+            color: #0B1524;
+            display: block;
+        }
+
+        .why_as_wrapper .img img{
+            width: 100%;
+        }
+        @media (max-width: 800px) {
+            .why_as_wrapper{
+                flex-direction: column;
+            }
+            .why_as_wrapper .img, .why_as_wrapper .content{
+                width: 100%;
+                padding-left: 0;
+            }
+            .why_as_wrapper .img{
+                margin-top: 20px;
+            }
+            .why_as_wrapper .content span{
+                font-size: 24px;
+            }
+        }
     </style>
     <div class="container">
         <div class="wrapper-main-archives">
@@ -51,12 +91,72 @@ require_once get_template_directory() . '/inc/component/header-page.php';
             </div>
         </div>
     </div>
-
     <style>
-        .why_as_wrapper{
+        .stats-wrapper{
             display: flex;
         }
+        .stats-wrapper .items{
+            padding-left: 60px;
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .stats-wrapper .img{
+            width: 40%;
+        }
+        .stats-wrapper .img img{
+            width: 100%;
+        }
+        .stats-wrapper .item{
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .stats-wrapper .item h6{
+            font-weight: 800;
+            font-size: 70px;
+            line-height: 120%;
+            color: #8C1429;
+        }
+        .stats-wrapper .item span{
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 22px;
+            color: #1A1818;
+        }
+        @media (max-width: 800px) {
+            .stats-wrapper{
+                flex-direction: column;
+                padding-top: 40px;
+            }
+            .stats-wrapper .items, .stats-wrapper .img {
+                padding-left: 0px;
+                width: 100%;
+            }
+            .stats-wrapper .item h6{
+                font-size: 45px;
+            }
+            .stats-wrapper .item span{
+                font-size: 14px;
+            }
+        }
     </style>
+    <div class="container padding-d">
+        <div class="stats-wrapper">
+            <div class="img">
+                <img src="<?= get_field('stats_object')['stats_image']['url'] ?>" alt="">
+            </div>
+            <div class="items">
+                <?php foreach (get_field('stats_object')['stats_items'] as $item): ?>
+                 <div class="item">
+                     <h6><?= $item['count']?></h6>
+                     <span><?= $item['description']?></span>
+                 </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
     <div class="container padding-d">
         <div class="why_as_wrapper">
             <div class="content">
@@ -64,7 +164,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
                 <p><?= get_field('why_us_description') ?></p>
                 <span><?= get_field('why_us_span') ?></span>
             </div>
-            <div>
+            <div class="img">
                 <img src="<?= get_field('why_us_image')['url'] ?>" alt="">
             </div>
         </div>
@@ -139,6 +239,6 @@ require_once get_template_directory() . '/inc/component/header-page.php';
     </div>
 
 <?php
-get_template_part( 'template-parts/footer-menus-widgets' );
+require_once get_template_directory() . '/inc/component/footer-page.php';
 get_footer();
 ?>

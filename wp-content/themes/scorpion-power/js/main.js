@@ -25,17 +25,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         pagination: {
             el: '.pagination',
+            renderBullet: function (index, className) {
+                return '<div class="' + className + '"><div>' + (index + 1) + "</div></div>";
+            },
         },
 
         navigation: {
             nextEl: '.button-next',
             prevEl: '.button-prev',
         },
-        /*
+
         autoplay: {
             disableOnInteraction: false,
             delay: 4000,
-        }, */
+        },
         scrollbar: {
             el: '.swiper-scrollbar',
             dragSize: 25,
@@ -59,7 +62,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 spaceBetween: 30,
             }
         }
-        new Swiper('.archive-' + $(item).attr('data-type'), config);
+        let swiper = new Swiper('.archive-' + $(item).attr('data-type'), config);
+
+        swiper.on('slideChange', function () {
+            active_strip = $('.archive-' + $(item).attr('data-type')).find('.swiper-pagination-bullet-active');
+            active_strip.removeClass('animation')
+
+
+          //  active_strip.insertBefore('.d')
+            $( "" ).insertBefore( active_strip);
+            setTimeout(
+                function(){
+                    active_strip.addClass('animation')
+                },100
+            );
+        });
     });
 
 });

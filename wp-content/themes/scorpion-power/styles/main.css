@@ -59,17 +59,28 @@ body h4{
     align-items: center;
     border-radius: 50px;
     padding: 0 32px;
-    min-height: 45px;
+    height: 45px;
     max-width: 180px;
     justify-content: center;
     box-sizing: border-box;
     text-decoration: none;
     color: #fff;
     border: unset;
+    transition: 0.3s;
+    cursor: pointer;
 }
-
+.button:hover{
+    background: #0A5867;
+}
+.button:disabled{
+    opacity: 0.4;
+    cursor: unset;
+}
 .button.contact{
     background: #8C1429;
+}
+.button.contact:hover{
+    background: #B9102E;
 }
 .button svg{
     margin-left: 10px;
@@ -352,8 +363,10 @@ body h4{
 }
 .archive-items.default .archive-item .img{
     height: 300px;
+    position: relative;
+    overflow: hidden;
 }
-.archive-items.default .archive-item .img img{
+.archive-items.default .archive-item .img > img{
     width: 100%;
     height: 100%;
     border-radius: 10px;
@@ -549,6 +562,7 @@ body h4{
 .navigation-wrapper{
     margin-top: 46px;
     display: flex;
+    min-height: 19px;
     align-items: center;
 }
 .navigation-wrapper .pagination{
@@ -562,6 +576,41 @@ body h4{
     bottom: unset!important;
     padding: 0 30px;
 }
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
+    margin: 0 10px!important;
+}
+.navigation-wrapper .pagination .swiper-pagination-bullet-active{
+    background: #1A1818;
+}
+.navigation-wrapper .pagination .swiper-pagination-bullet-active.animation{
+    position: relative;
+}
+.navigation-wrapper .pagination .swiper-pagination-bullet-active.animation:before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 50px;
+    border: 2px solid #1A1818;
+    box-sizing: border-box;
+    left: -6px;
+    top: -6px;
+    opacity: 0.2;
+}
+.navigation-wrapper .pagination .swiper-pagination-bullet-active.animation:after{
+    content: ' ';
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background: transparent;
+    border-radius: 50px;
+    border: 2px solid #1A1818;
+    box-sizing: border-box;
+    left: -6px;
+    top: -6px;
+}
+
 .button-next, .button-prev{
     display: flex;
     cursor: pointer;
@@ -622,6 +671,7 @@ body h4{
     box-shadow: 0px 0px 31px rgba(188, 188, 188, 0.2);
     border-radius: 10px;
 }
+
 .archive-items-main .archive-item.image-icon .item-content{
     padding: 20px 0;
 }
@@ -668,7 +718,12 @@ body h4{
     padding-bottom: 50px;
 }
 
-
+@media (max-width: 800px) {
+    .padding-d{
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+}
 .block-list{
     margin-top: 15px;
     display: flex;
