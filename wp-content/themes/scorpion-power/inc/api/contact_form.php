@@ -86,7 +86,8 @@ function action_api_contact_form()
         foreach ($_POST['fields'] as $field){
             if(isset($field['value']) && $field['value'] != '' && isset($field['placeholder'])){
                 $name_tg = $field['placeholder'] ?? $field['name'];
-                $text .= $name_tg . ": " . $field['value'] . "\n";
+                $value = preg_replace("~(\<(/?[^\>]+)\>)~uis"," ", $field['value']);
+                $text .= $name_tg . ": " . $value . "\n";
             }
         }
 

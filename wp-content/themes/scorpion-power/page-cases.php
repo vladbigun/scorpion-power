@@ -9,7 +9,7 @@ $args = [
 ];
 $the_query = new WP_Query( $args );
 ?>
-    <div class="container">
+    <div class="container p-t-50 p-b-50">
         <div class="archive-items cases">
             <?php if ($the_query->have_posts()) :?>
                 <?php while ($the_query->have_posts()) : $the_query->the_post() ?>

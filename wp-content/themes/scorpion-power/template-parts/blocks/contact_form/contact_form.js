@@ -1,25 +1,45 @@
 jQuery(document).ready(function($) {
-    let clearField = () => {
-        $('.scorpion-contact-form__fields-wrapper input').map((index, item) => {
-            $(item).val('')
+    let clearFieldError = (th) => {
+        th.find('input, textarea, select').map((index, item) => {
+            if( $(item).attr('type') == 'submit') return;
             $(item).removeClass('error')
             $(item).parent().find('.scorpion-contact-form__field-error').text('')
         })
     }
-
-    $('.scorpion-contact-form form').on('submit', function(e){
-        e.preventDefault();
+    let clearFieldValue = (th) => {
+        th.find('input, textarea, select').map((index, item) => {
+            if( $(item).attr('type') == 'submit') return;
+            $(item).val('')
+        })
+    }
+    let addFieldError = (th, data) => {
+        th.find('input, textarea, select').map((index, item) => {
+            data.errors.map((error) => {
+                if($(item).attr('name') == error.field){
+                    $(item).addClass('error');
+                    $(item).parent().find('.scorpion-contact-form__field-error').text(error.error)
+                }
+            })
+        })
+    }
+    let generateArrayFields = (th) => {
         let fields = [];
-        let th = $(this);
-        $(this).find('input, textarea, select').map((index, item) => {
+        th.find('input, textarea, select').map((index, item) => {
             fields.push({
                 'name' : $(item).attr('name'),
                 'placeholder' : $(item).attr('placeholder'),
                 'value' : $(item).val(),
             })
         })
+        return fields;
+    }
+    $('.scorpion-contact-form form').on('submit', function(e){
+        e.preventDefault();
 
-        $(this).find('.submit').attr('disabled', 'disabled')
+        let this_element = $(this);
+        let fields = generateArrayFields(this_element)
+
+        this_element.find('.submit').attr('disabled', 'disabled')
         let request = $.ajax({
             type: 'POST',
             data : {
@@ -31,24 +51,15 @@ jQuery(document).ready(function($) {
             url: $(this).data('url')
         });
         request.done(function(msg) {
-            let data = JSON.parse(msg);
-            console.log('telegram send data', data);
-            clearField()
+            clearFieldError(this_element)
+            const data = JSON.parse(msg);
             if(data.success){
+                clearFieldValue(this_element);
                 $('.modal-success').addClass('active');
             } else {
-                th.find('input, textarea, select').map((index, item) => {
-                    console.log('item', item);
-                    data.errors.map((error) => {
-                        console.log('error', error);
-                        if($(item).attr('name') == error.field){
-                            $(item).addClass('error');
-                            $(item).parent().find('.scorpion-contact-form__field-error').text(error.error)
-                        }
-                    })
-                })
+                addFieldError(this_element, data)
             }
-            $('.scorpion-contact-form form .submit').removeAttr('disabled');
+            this_element.find('.submit').removeAttr('disabled');
         });
     });
 });

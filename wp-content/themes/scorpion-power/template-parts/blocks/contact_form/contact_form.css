@@ -1,3 +1,6 @@
+.scorpion-contact-form *{
+    box-sizing: border-box;
+}
 .modal-success{
     position: fixed;
     width: 100vw;
@@ -39,10 +42,7 @@
 .scorpion-contact-form{
     display: flex;
 }
-.scorpion-contact-form *{
-    box-sizing: border-box;
-    transition: 0.4s;
-}
+
 .scorpion-contact-form > .column {
     flex: 1;
 }

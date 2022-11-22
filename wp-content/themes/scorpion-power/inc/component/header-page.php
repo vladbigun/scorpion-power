@@ -21,6 +21,8 @@
             <?php endif;?>
         </div>
         <div class="img">
+            <img class="prev-img" src="<?= get_field('page_image') ?>" alt="">
+
             <img src="<?= get_field('page_video') ?>" alt="">
         </div>
 

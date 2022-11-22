@@ -55,7 +55,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
             }
         }
     </style>
-    <div class="container">
+    <div class="container p-t-50 p-b-100">
         <div class="wrapper-main-archives">
             <div class="swiper archive-powerful" data-item="<?= get_field('powerful_object')['powerful_item_count'] ?? '2'?>" data-type="powerful">
                 <div class="content-archive">
@@ -142,7 +142,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
             }
         }
     </style>
-    <div class="container padding-d">
+    <div class="container p-t-50 p-b-100">
         <div class="stats-wrapper">
             <div class="img">
                 <img src="<?= get_field('stats_object')['stats_image']['url'] ?>" alt="">
@@ -157,7 +157,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
             </div>
         </div>
     </div>
-    <div class="container padding-d">
+    <div class="container p-t-50 p-b-50">
         <div class="why_as_wrapper">
             <div class="content">
                 <h3><?= get_field('why_us_title') ?></h3>
@@ -169,7 +169,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container p-t-50 p-b-100">
         <?php foreach (get_field('archives') as $archive): ?>
             <?php
             $the_query_expertize = new WP_Query( [

@@ -5,7 +5,7 @@ $items = get_field('items') ?: [];
     <div class="modal-success__container">
         <h5><?= get_field('success_object')['title'] ?></h5>
         <span><?= get_field('success_object')['content'] ?></span>
-        <a class="button contact" href="#" onclick="$('.modal-success').removeClass('active')"><?= pll__('Ok') ?></a>
+        <button class="button contact" onclick="$('.modal-success').removeClass('active')"><?= pll__('Ok') ?></button>
     </div>
 </div>
 <div class="scorpion-contact-form">

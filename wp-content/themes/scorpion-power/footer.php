@@ -30,9 +30,11 @@ $menu_footer_items = wp_get_nav_menu_items($menu_footer->term_id, array('order' 
                             </a>
                             <ul class="wrapper-menu">
                                 <?php foreach ($menu_items as $item):?>
-                                    <li class="menu-item">
-                                        <a href="<?= $item->url ?>" title="<?= $item->title ?>"><?= $item->title ?></a>
-                                    </li>
+                                    <?php if($item->visible_footer):?>
+                                        <li class="menu-item">
+                                            <a href="<?= $item->url ?>" title="<?= $item->title ?>"><?= $item->title ?></a>
+                                        </li>
+                                    <?php endif;?>
                                 <?php endforeach; ?>
                             </ul>
                             <div class="contact-info">
@@ -52,6 +54,14 @@ $menu_footer_items = wp_get_nav_menu_items($menu_footer->term_id, array('order' 
                     </div>
                 </div>
                 <div class="bottom-footer">
+                    <div class="social-links mobile">
+                        <?php $contacts_info = get_field('social_info', 'option'); ?>
+                        <?php foreach ($contacts_info as $contact):?>
+                            <a target="_blank" href="<?= $contact['link'] ?>">
+                                <img src="<?= $contact['icon'] ?>" alt="">
+                            </a>
+                        <?php endforeach;?>
+                    </div>
                     <div class="container">
                         <div class="wrapper-footer">
                             <div class="copyright">

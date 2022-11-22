@@ -11,7 +11,7 @@ get_header();
 require_once get_template_directory() . '/inc/component/header-page.php';
 ?>
 
-<div class="container">
+<div class="container p-t-50 p-b-50">
     <?php
     if ( have_posts() ) {
         while (have_posts()) {

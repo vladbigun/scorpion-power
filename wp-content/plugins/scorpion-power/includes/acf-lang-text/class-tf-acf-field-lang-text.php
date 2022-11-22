@@ -41,7 +41,7 @@ class tf_acf_field_lang_text extends \acf_field {
 		 *
 		 * For public-facing UI. May contain spaces.
 		 */
-		$this->label = __( 'Lang Text (TF addon)', 'tf' );
+		$this->label = __( 'Lang Text (VB addon)', 'tf' );
 
 		/**
 		 * The category the field appears within in the field type picker.

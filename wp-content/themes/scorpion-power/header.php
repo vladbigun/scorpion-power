@@ -120,6 +120,5 @@ $langs_array = pll_the_languages(array('raw' => 1));
             </div>
 		</header>
 
-
-		<?php
+<?php
 

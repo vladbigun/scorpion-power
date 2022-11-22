@@ -25,8 +25,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         pagination: {
             el: '.pagination',
+            clickable: true,
+
             renderBullet: function (index, className) {
-                return '<div class="' + className + '"><div>' + (index + 1) + "</div></div>";
+                // return '<circle class="' + className + ' wrapper-point"><div class="point">'+'</div></circle>';
+                return '<div class="progress ' + className + '" data-id="0">\n' +
+                    '<div class="progress-back" style="opacity: 0.5;"></div>' +
+                    '<progress-ring stroke="3" radius="20" progress="0"></progress-ring>' +
+                    '</div>'
             },
         },
 
@@ -34,11 +40,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
             nextEl: '.button-next',
             prevEl: '.button-prev',
         },
-
+/*
         autoplay: {
             disableOnInteraction: false,
             delay: 4000,
-        },
+        }, */
         scrollbar: {
             el: '.swiper-scrollbar',
             dragSize: 25,
@@ -68,9 +74,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             active_strip = $('.archive-' + $(item).attr('data-type')).find('.swiper-pagination-bullet-active');
             active_strip.removeClass('animation')
 
-
-          //  active_strip.insertBefore('.d')
-            $( "" ).insertBefore( active_strip);
             setTimeout(
                 function(){
                     active_strip.addClass('animation')

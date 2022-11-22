@@ -29,7 +29,7 @@ $archives = get_field('archives') ;
         ] );
         ?>
 
-        <div class="wrapper-main-archives">
+        <div class="wrapper-main-archives p-t-50 p-b-100">
             <div class="swiper archive-<?=$archive['post_type']?>" data-item="<?= $archive['item_count'] ?? '2'?>" data-type="<?=$archive['post_type']?>">
                 <div class="content-archive">
                     <h3><?= $archive['title'] ?></h3>
