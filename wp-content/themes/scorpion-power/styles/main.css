@@ -618,6 +618,11 @@ body h4{
 .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
     margin: 0 10px!important;
 }
+.swiper-pagination-bullet{
+    width: unset !important;
+    height: unset !important;
+    background: unset !important;
+}
 @media (max-width: 800px) {
     .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
         margin: 0 2px!important;

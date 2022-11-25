@@ -14,8 +14,8 @@
     }
 
     .technologies-post__item{
-        overflow: hidden;
         padding: 4px 0;
+        margin-left: 20px;
     }
     .technologies-post__background{
         background-repeat: no-repeat;
