@@ -1,6 +1,6 @@
 <style>
     .technologies-post__stack{
-        padding: 20px;
+        padding: 30px;
         box-shadow: 0px 0px 31px rgba(188, 188, 188, 0.2);
         border-radius: 10px;
         box-sizing: border-box;

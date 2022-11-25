@@ -59,7 +59,7 @@ class ProgressRing extends HTMLElement {
            style="stroke-dashoffset:${this._circumference}"
            stroke-width="${stroke}"
            fill="transparent"
-           r="2"
+           r="1"
            cx="${radius}"
            cy="${radius}"
         />
@@ -78,18 +78,19 @@ class ProgressRing extends HTMLElement {
     }
 
     setProgress(percent) {
+        console.log(this.getAttribute('active'))
         const back = this._root.querySelector('.back-circle');
-      //  back.style.opacity = 1;
-        if (percent == 0) {
-          //  back.style.opacity = 0;
-        }
-        const offset = this._circumference - (percent / 100 * this._circumference);
         const circle = this._root.querySelector('.circle');
-      //  circle.style.opacity = 1;
-
-        if (percent == 0) {
-           // circle.style.opacity = 0;
+        if(this.getAttribute('active') === 'true'){
+            back.style.opacity = 1;
+            circle.style.opacity = 1;
+        } else{
+            circle.style.opacity = 0;
+            back.style.opacity = 0;
         }
+
+        const offset = this._circumference - (percent / 100 * this._circumference);
+
         circle.style.strokeDashoffset = offset;
     }
 
@@ -98,86 +99,81 @@ class ProgressRing extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        
-        if(name === 'active'){
-            if(newValue)
-        }
         if (name === 'progress') {
             this.setProgress(newValue);
         }
+
     }
 }
 window.customElements.define('progress-ring', ProgressRing);
 
+
+function loaR(item){
+    let autoplaySpeed = 5000;
+    let interval = '';
+
+    $(item).find('progress-ring').attr('active', 'false')
+    let active_strip = $(item).find('.swiper-pagination-bullet-active');
+    let progress = 0;
+
+    active_strip.find('progress-ring').attr('active', 'true')
+    $(item).find('progress-ring').attr('progress', 0);
+
+    let item_int = $(item);
+    interval = setInterval(() => {
+        if(active_strip.find('progress-ring').attr('active') === 'true'){
+            item_int.find('progress-ring').attr('progress', ++progress);
+        }
+        if (progress === 100) clearInterval(interval);
+    }, (autoplaySpeed - 1500) / 100);
+}
 window.addEventListener('DOMContentLoaded', (event) => {
-    let config = {
 
-        direction: 'horizontal',
-
-        pagination: {
-            el: '.pagination',
-            clickable: true,
-
-            renderBullet: function (index, className) {
-                return `<div class="${className}">
-                            <progress-ring stroke="3" radius="20" progress="0"></progress-ring>
-                        </div>`;
-            },
-        },
-
-        navigation: {
-            nextEl: '.button-next',
-            prevEl: '.button-prev',
-        },
-
-        autoplay: {
-            disableOnInteraction: false,
-            delay: 4000,
-        },
-        scrollbar: {
-            el: '.swiper-scrollbar',
-            dragSize: 25,
-        },
-        breakpoints: {}
-    };
 
     $('.swiper').each((index, item) => {
-        console.log(item)
-        console.log($(item).attr('data-item'))
-        config.breakpoints = {
-            1: {
-                slidesPerView: 1,
-                spaceBetween: 30,
+        let config = {
+
+            direction: 'horizontal',
+            navigation: {
+                nextEl: '.button-next',
+                prevEl: '.button-prev',
             },
-            800: {
-                slidesPerView: 2,
-                spaceBetween: 30,
+            pagination: {
+                el: '.pagination',
+                clickable: false,
+                renderBullet: function (index, className) {
+                    return `<div class="${className}">
+                            <progress-ring stroke="3" radius="20" progress="0"></progress-ring>
+                        </div>`;
+                },
             },
-            1000: {
-                slidesPerView: $(item).attr('data-item'),
-                spaceBetween: 30,
+            autoplay: {
+                disableOnInteraction: false,
+                delay: 4000,
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                dragSize: 25,
+            },
+            breakpoints: {
+                1: {
+                    slidesPerView: $(item).attr('data-item-mobile') ?? 1 ,
+                    spaceBetween: 30,
+                },
+                800: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1000: {
+                    slidesPerView: $(item).attr('data-item'),
+                    spaceBetween: 30,
+                }
             }
-        }
+        };
         let swiper = new Swiper(item, config);
-
-        swiper.on('slideChange', function (el) {
-            console.log('slideChange')
-            let autoplaySpeed = 3000;
-            let interval = '';
-
-            $(item).find('progress-ring').attr('active', false)
-            let active_strip = $(item).find('.swiper-pagination-bullet-active');
-            active_strip.find('progress-ring').attr('active', true)
-
-           // jQuery('.progress progress-ring').attr('progress', 0)
-            let progress = 0;
-
-
-            interval = setInterval(() => {
-                $(item).find('progress-ring').attr('progress', ++progress);
-                if (progress === 100)
-                    clearInterval(interval);
-            }, (autoplaySpeed - 1500) / 100);
+        loaR(item);
+        swiper.on('slideChange', function () {
+            loaR(item);
         });
     });
 
