@@ -6,7 +6,20 @@ require_once get_template_directory() . '/inc/component/header-page.php';
 $archives = get_field('archives') ;
 ?>
 
+<img class="mobile-disabled" style="position:absolute; left: 150px; top: 920px; z-index: -1" src="<?= get_template_directory_uri() ?>/image/oval-pink.png" alt="">
 <div class="container">
+    <?php
+    if ( have_posts() ) {
+        while (have_posts()) {
+            the_post();
+            get_template_part('template-parts/content', get_post_type());
+        }
+    }
+    ?>
+</div>
+
+<div class="container">
+    <!--
     <?php if($archives):?>
     <?php foreach ($archives as $archive): ?>
         <?php
@@ -90,6 +103,7 @@ $archives = get_field('archives') ;
         </div>
      <?php endforeach;?>
     <?php endif;?>
+    -->
 </div>
 
 <?php

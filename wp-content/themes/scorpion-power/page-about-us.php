@@ -57,7 +57,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
     </style>
     <div class="container p-t-50 p-b-100">
         <div class="wrapper-main-archives">
-            <div class="swiper archive-powerful" data-item-mobile="2" data-item="<?= get_field('powerful_object')['powerful_item_count'] ?? '2'?>" data-type="powerful">
+            <div class="swiper swiper-a archive-powerful" data-number-el-mobile="2" data-number-el-desktop="<?= get_field('powerful_object')['powerful_item_count']?>" data-type="powerful">
                 <div class="content-archive">
                     <h3><?= get_field('powerful_title') ?></h3>
                 </div>
@@ -169,6 +169,17 @@ require_once get_template_directory() . '/inc/component/header-page.php';
             </div>
         </div>
     </div>
+    <div class="container">
+        <?php
+        if ( have_posts() ) {
+            while (have_posts()) {
+                the_post();
+                get_template_part('template-parts/content', get_post_type());
+            }
+        }
+        ?>
+    </div>
+<!--
     <div class="container p-t-50 p-b-100">
         <?php foreach (get_field('archives') as $archive): ?>
             <?php
@@ -237,7 +248,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
             </div>
         <?php endforeach;?>
     </div>
-
+-->
 <?php
 require_once get_template_directory() . '/inc/component/footer-page.php';
 get_footer();

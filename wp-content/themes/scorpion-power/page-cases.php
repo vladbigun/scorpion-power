@@ -9,6 +9,9 @@ $args = [
 ];
 $the_query = new WP_Query( $args );
 ?>
+    <img class="mobile-disabled" style="position:absolute; right: 150px; top: 840px; z-index: -1" src="<?= get_template_directory_uri() ?>/image/oval-pink.png" alt="">
+
+    <img class="mobile-disabled" style="position:absolute; left: 150px; top: 2000px; z-index: -1" src="<?= get_template_directory_uri() ?>/image/oval-blue.png" alt="">
     <div class="container p-t-50 p-b-50">
         <div class="archive-items cases">
             <?php if ($the_query->have_posts()) :?>

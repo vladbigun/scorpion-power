@@ -8,8 +8,14 @@ $items = get_field('items') ?: [];
         <button class="button contact" onclick="$('.modal-success').removeClass('active')"><?= pll__('Ok') ?></button>
     </div>
 </div>
-<div class="scorpion-contact-form">
 
+<div class="scorpion-contact-form__wrapper">
+    <div class="scorpion-contact-form__title">
+        <h3><?= get_field('title') ?> </h3>
+        <p><?= get_field('description') ?></p>
+    </div>
+</div>
+<div class="scorpion-contact-form">
     <div class="column">
         <form data-post-id="<?= get_the_ID() ?>" data-url="<?= admin_url('admin-ajax.php') ?>" data-block-id="<?= $block['id'] ?>" class="scorpion-contact-form__form" action="" type="post">
             <div class="scorpion-contact-form__fields-wrapper">

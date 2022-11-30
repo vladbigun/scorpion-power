@@ -1,25 +1,4 @@
-jQuery(function($) {
-    $('.menu-burger').on('click', () => {
-        let header = $('.header');
-        if(header.hasClass('active')){
-            header.find('.header-active-wrapper').css({'opacity' : 0})
-            $('body').css({'overflow': 'auto'})
-            setTimeout(function () {
-                header.removeClass('active')
-            }, 600);
-        } else{
-            header.addClass('active')
-            setTimeout(function () {
-                header.find('.header-active-wrapper').css({'opacity' : 1})
-            }, 1);
-            $('body').css({'overflow': 'hidden'})
-        }
-    })
-})
-
-
-
-class ProgressRingg extends HTMLElement {
+class ProgressRing extends HTMLElement {
     constructor() {
         super();
 
@@ -107,10 +86,10 @@ class ProgressRingg extends HTMLElement {
 
     }
 }
-window.customElements.define('progress-ringg', ProgressRingg);
+window.customElements.define('progress-ring', ProgressRing);
 
 
-function loaRA(item){
+function loaR(item){
     let autoplaySpeed = 5000;
     let interval = '';
 
@@ -132,7 +111,7 @@ function loaRA(item){
 window.addEventListener('DOMContentLoaded', (event) => {
 
 
-    $('.swiper-a').each((index, item) => {
+    $('.swiper').each((index, item) => {
         let config = {
 
             direction: 'horizontal',
@@ -145,7 +124,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 clickable: false,
                 renderBullet: function (index, className) {
                     return `<div class="${className}">
-                            <progress-ringg stroke="3" radius="16" progress="0"></progress-ringg>
+                            <progress-ring stroke="3" radius="16" progress="0"></progress-ring>
                         </div>`;
                 },
             },
@@ -173,13 +152,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
         };
         let swiper = new Swiper(item, config);
-        loaRA(item);
+        loaR(item);
         swiper.on('slideChange', function () {
-            loaRA(item);
+            loaR(item);
         });
     });
 });
-
-
-
-

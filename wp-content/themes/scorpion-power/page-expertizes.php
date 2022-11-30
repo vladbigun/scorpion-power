@@ -9,9 +9,7 @@ $args = [
 ];
 $the_query = new WP_Query( $args );
 ?>
-    <style>
 
-    </style>
     <div class="container p-t-50 p-b-50">
         <div class="archive-items default">
             <?php if ($the_query->have_posts()) :?>
