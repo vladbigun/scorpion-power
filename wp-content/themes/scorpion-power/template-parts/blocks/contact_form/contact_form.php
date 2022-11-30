@@ -35,12 +35,16 @@ $items = get_field('items') ?: [];
                             <div class="scorpion-contact-form__field-error"></div>
                         </div>
                         <?php if($item['type_group']['type'] == 'select'): ?>
-                            <select class="input" name="<?= $item['name'] ?>">
+
+
+                            <input class="input" type="text" name="<?= $item['name'] ?>" list="<?= $item['name'] ?>-id">
+                            <datalist id="<?= $item['name'] ?>-id">
                                 <option value=""><?= $item['text_group']['content'] ?></option>
                                 <?php foreach ($item['type_group']['select'] as $option):?>
-                                    <option value="<?= $option['name'] ?>"><?= $option['title'] ?></option>
+                                    <option value="<?= $option['name'] ?>"></option>
                                 <?php endforeach;?>
-                            </select>
+                            </datalist>
+
                         <?php elseif($item['type_group']['type'] == 'textarea'): ?>
                             <textarea class="input" name="<?= $item['name'] ?>" rows="5" placeholder="<?= $item['text_group']['content'] ?>"></textarea>
                         <?php else: ?>
