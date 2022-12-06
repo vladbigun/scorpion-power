@@ -36,14 +36,15 @@ $items = get_field('items') ?: [];
                         </div>
                         <?php if($item['type_group']['type'] == 'select'): ?>
 
-
-                            <input class="input" type="text" name="<?= $item['name'] ?>" list="<?= $item['name'] ?>-id">
+                        <div class="datalist-wrapper">
+                            <input class="input datalist-input" type="text" name="<?= $item['name'] ?>" list="<?= $item['name'] ?>-id">
                             <datalist id="<?= $item['name'] ?>-id">
                                 <option value=""><?= $item['text_group']['content'] ?></option>
                                 <?php foreach ($item['type_group']['select'] as $option):?>
                                     <option value="<?= $option['name'] ?>"></option>
                                 <?php endforeach;?>
                             </datalist>
+                        </div>
 
                         <?php elseif($item['type_group']['type'] == 'textarea'): ?>
                             <textarea class="input" name="<?= $item['name'] ?>" rows="5" placeholder="<?= $item['text_group']['content'] ?>"></textarea>

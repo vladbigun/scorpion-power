@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="header-main">
+    <div class="header-main footer-main">
         <div class="text">
             <h1><?= get_field('page_footer_title', 'option') ?></h1>
             <p><?= get_field('page_footer_description', 'option') ?></p>

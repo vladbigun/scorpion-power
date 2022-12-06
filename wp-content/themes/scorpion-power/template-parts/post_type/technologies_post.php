@@ -49,6 +49,17 @@
     .technologies-post__background .icon{
         height: 40px;
     }
+    @media (max-width: 1030px) {
+        .technologies-post__background {
+            width: 200px;
+            height: 200px;
+            bottom: -70px;
+            right: -70px;
+        }
+    }
+    @media (max-width: 800px) {
+        
+    }
 
 </style>
 

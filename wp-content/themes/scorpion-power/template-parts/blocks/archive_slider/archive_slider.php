@@ -1,6 +1,7 @@
-
-
-<div class="archive-slider p-t-50 p-b-100">
+<?php
+$p_b = (get_field('archive')->post_type == 'services_post') ? '50' : '100';
+?>
+<div class="archive-slider p-t-50 p-b-<?=$p_b?>">
             <?php
             if(get_field('archive')->post_type == 'technologies_post') :
                 get_template_part( 'template-parts/general_block', null, [
@@ -51,8 +52,10 @@
                                             </div>
                                         </div>
                                         <div class="item-content">
-                                            <h4><?= get_the_title() ?></h4>
-                                            <p class="description"><?= get_field('description', get_the_ID()) ?> </p>
+                                            <div class="title">
+                                                <h4><?= get_the_title() ?></h4>
+                                                <p class="description"><?= get_field('description', get_the_ID()) ?> </p>
+                                            </div>
                                             <?php if( get_field('button') && !get_field('image_icon')):?>
                                                 <a href="<?= get_field('button')['url'] ?>">
                                                     <span><?= __('More')?></span>

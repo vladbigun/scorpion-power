@@ -32,7 +32,33 @@ body h4{
     background: #1A1818;
     border-radius: 32px;
 }
-
+.datalist-wrapper{
+    position: relative;
+}
+.datalist-wrapper:before{
+    content: '';
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    position: absolute;
+    z-index: 6;
+    right: 6px;
+    top: 18px;
+}
+.datalist-wrapper:after{
+    content: '';
+    position: absolute;
+    right: 18px;
+    top: 32px;
+    width: 12px;
+    height: 6px;
+    z-index: 10;
+    background-size: auto;
+    background: url("../image/ttg2.svg") no-repeat center;
+}
+.datalist-wrapper.active:after{
+    transform: rotate(180deg);
+}
 @media (max-width: 800px) {
     body h1{
         font-size: 36px;
@@ -269,6 +295,9 @@ body h4{
 }
 .header-main p{
     padding-bottom: 20px;
+}
+.header-main.footer-main p {
+    font-size: 16px;
 }
 .header-archive > * , .header-main > *{
     flex: 1;
@@ -592,7 +621,8 @@ body h4{
 .archive-items-main .item-content p{
     font-size: 14px;
     margin-top: 10px;
-    max-height: 170px;
+
+    max-height: 96px;
     overflow: hidden;
 }
 .archive-items-main .item-content a{
@@ -620,13 +650,14 @@ body h4{
     height: 100%;
 }
 .navigation-wrapper{
-    margin-top: 46px;
+    margin-top: 22px;
     display: flex;
     min-height: 19px;
     align-items: center;
 }
 .navigation-wrapper .pagination{
     position: relative;
+
     display: flex;
     align-items: center;
     width: unset!important;
@@ -645,15 +676,24 @@ body h4{
 @media (max-width: 800px) {
     .archive-items-main .archive-item img{
         height: 200px;
+        width: 100%;
     }
     .archive-items-main .archive-item.vertical img{
         height: unset;
+        width: unset;
     }
     .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
         margin: 0!important;
     }
+    .navigation-wrapper{
+        justify-content: space-between;
+        align-items: center;
+    }
     .navigation-wrapper .pagination{
         padding: 0 10px;
+        width: calc(100% - 28px);
+        overflow: hidden;
+        box-sizing: border-box;
     }
 }
 .navigation-wrapper .pagination .swiper-pagination-bullet-active{
@@ -767,6 +807,7 @@ body h4{
     .archive-items-main .archive-item .img{
         width: unset;
         display: block;
+        min-height: unset;
         justify-content: unset;
         max-height: 178px;
     }

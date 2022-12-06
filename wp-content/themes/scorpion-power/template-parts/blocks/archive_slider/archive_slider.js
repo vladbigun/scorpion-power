@@ -35,12 +35,10 @@ class ProgressRing extends HTMLElement {
            cy="${radius}"
         />
         <circle class="back-circle-2"
-           stroke="rgba(26,54,24,1)"
-           stroke-dasharray="500,500"
            style="stroke-dashoffset:${this._circumference}"
            stroke-width="${stroke}"
            fill="transparent"
-           r="1"
+           r="2"
            cx="${radius}"
            cy="${radius}"
         />
@@ -62,12 +60,16 @@ class ProgressRing extends HTMLElement {
         console.log(this.getAttribute('active'))
         const back = this._root.querySelector('.back-circle');
         const circle = this._root.querySelector('.circle');
+        const circle2 = this._root.querySelector('.back-circle-2');
+        circle2.style.fill = 'rgb(26,24,24)';
         if(this.getAttribute('active') === 'true'){
             back.style.opacity = 1;
             circle.style.opacity = 1;
+            circle2.style.r = 4;
         } else{
             circle.style.opacity = 0;
             back.style.opacity = 0;
+            circle2.style.r = 2;
         }
 
         const offset = this._circumference - (percent / 100 * this._circumference);
@@ -105,7 +107,7 @@ function loaR(item){
         if(active_strip.find('progress-ring').attr('active') === 'true'){
             item_int.find('progress-ring').attr('progress', ++progress);
         }
-        if (progress === 100) clearInterval(interval);
+        if (progress === 100 || active_strip.find('progress-ring').attr('active') === 'false') clearInterval(interval);
     }, (autoplaySpeed - 1500) / 100);
 }
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -145,7 +147,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     slidesPerView: $(item).data('number-el-tablet') ?? 2,
                     spaceBetween: 30,
                 },
-                1000: {
+                1140: {
                     slidesPerView: $(item).data('number-el-desktop') ?? 3,
                     spaceBetween: 30,
                 }

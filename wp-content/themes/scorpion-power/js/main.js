@@ -15,6 +15,13 @@ jQuery(function($) {
             $('body').css({'overflow': 'hidden'})
         }
     })
+
+    $('.datalist-input').on('focus', function (el){
+        $(this).parent().addClass('active')
+    })
+    $('.datalist-input').on('focusout', function (el){
+        $(this).parent().removeClass('active')
+    })
 })
 
 
@@ -61,7 +68,7 @@ class ProgressRingg extends HTMLElement {
            style="stroke-dashoffset:${this._circumference}"
            stroke-width="${stroke}"
            fill="transparent"
-           r="1"
+           r="3"
            cx="${radius}"
            cy="${radius}"
         />
@@ -83,12 +90,17 @@ class ProgressRingg extends HTMLElement {
         console.log(this.getAttribute('active'))
         const back = this._root.querySelector('.back-circle');
         const circle = this._root.querySelector('.circle');
+        const circle2 = this._root.querySelector('.back-circle-2');
+
         if(this.getAttribute('active') === 'true'){
             back.style.opacity = 1;
             circle.style.opacity = 1;
+            circle2.style.r = 5;
+
         } else{
             circle.style.opacity = 0;
             back.style.opacity = 0;
+            circle2.style.r = 2;
         }
 
         const offset = this._circumference - (percent / 100 * this._circumference);
