@@ -680,6 +680,9 @@ body h4{
     }
     .archive-items-main .archive-item.vertical img{
         height: unset;
+     /*   width: unset; */
+    }
+    .archive-items-main .archive-item.image-icon img{
         width: unset;
     }
     .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
@@ -803,6 +806,9 @@ body h4{
     }
     .archive-items-main .archive-item{
         flex-direction: column;
+    }
+    .archive-item.vertical{
+
     }
     .archive-items-main .archive-item .img{
         width: unset;

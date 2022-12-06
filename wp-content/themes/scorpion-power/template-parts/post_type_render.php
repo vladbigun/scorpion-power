@@ -15,7 +15,7 @@ $post_type_arr = new WP_Query( [
             width: calc(33.33% - 30px)!important;
         }
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1400px) {
             .wrapper_tech {
                 flex-wrap: unset;
             }
@@ -34,7 +34,8 @@ $post_type_arr = new WP_Query( [
         .navigation-wrapper.fix{
             display: none;
         }
-        @media (max-width: 800px) {
+
+        @media (max-width: 1400px) {
             .navigation-wrapper.fix{
                 display: flex;
             }

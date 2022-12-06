@@ -169,16 +169,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 el: '.swiper-scrollbar',
                 dragSize: 25,
             },
+            slidesPerView: $(item).data('number-el-mobile') ?? 1 ,
+            spaceBetween: 30,
             breakpoints: {
-                1: {
-                    slidesPerView: $(item).data('number-el-mobile') ?? 1 ,
-                    spaceBetween: 30,
-                },
                 800: {
                     slidesPerView: $(item).data('number-el-tablet') ?? 2,
                     spaceBetween: 30,
                 },
-                1000: {
+                1400: {
                     slidesPerView: $(item).data('number-el-desktop') ?? 3,
                     spaceBetween: 30,
                 }

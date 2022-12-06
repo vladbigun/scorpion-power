@@ -59,7 +59,7 @@ require_once get_template_directory() . '/inc/component/header-page.php';
 
     <div class="container p-t-50 p-b-100">
         <div class="wrapper-main-archives">
-            <div class="swiper swiper-a archive-powerful" data-number-el-mobile="2" data-number-el-desktop="<?= get_field('powerful_object')['powerful_item_count']?>" data-type="powerful">
+            <div class="swiper swiper-a archive-powerful" data-number-el-mobile="2" data-number-el-tablet="4" data-number-el-desktop="<?= get_field('powerful_object')['powerful_item_count']?>" data-type="powerful">
                 <div class="content-archive">
                     <h3><?= get_field('powerful_title') ?></h3>
                 </div>

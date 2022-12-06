@@ -37,7 +37,7 @@ $items = get_field('items') ?: [];
                         <?php if($item['type_group']['type'] == 'select'): ?>
 
                         <div class="datalist-wrapper">
-                            <input class="input datalist-input" type="text" name="<?= $item['name'] ?>" list="<?= $item['name'] ?>-id">
+                            <input class="input datalist-input" type="text" placeholder="<?= $item['text_group']['content'] ?>" name="<?= $item['name'] ?>" list="<?= $item['name'] ?>-id">
                             <datalist id="<?= $item['name'] ?>-id">
                                 <option value=""><?= $item['text_group']['content'] ?></option>
                                 <?php foreach ($item['type_group']['select'] as $option):?>
