@@ -147,7 +147,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     slidesPerView: $(item).data('number-el-tablet') ?? 2,
                     spaceBetween: 30,
                 },
-                1140: {
+                1400: {
                     slidesPerView: $(item).data('number-el-desktop') ?? 3,
                     spaceBetween: 30,
                 }

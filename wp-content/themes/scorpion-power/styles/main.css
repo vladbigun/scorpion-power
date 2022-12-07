@@ -1,5 +1,7 @@
 /* Default styles */
-
+body{
+    overflow-x: hidden;
+}
 body, body textarea, input, select{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
@@ -271,6 +273,7 @@ body h4{
     text-decoration: unset;
 }
 .container{
+    position: relative;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 32px;
@@ -784,7 +787,12 @@ body h4{
     min-height: 200px;
     max-height: 200px;
 }
-
+.archive-items-main .archive-item.vertical .img img{
+    width: 100%;
+}
+.archive-items-main .archive-item.image-icon .img img{
+    width: unset;
+}
 .archive-items-main .archive-item.image-icon .img, .powerful_item .img{
     overflow: unset;
     max-width: 90px;

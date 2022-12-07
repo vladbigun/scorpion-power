@@ -6,7 +6,9 @@ require_once get_template_directory() . '/inc/component/header-page.php';
 $archives = get_field('archives') ;
 ?>
 
-<img class="mobile-disabled" style="position:absolute; left: 150px; top: 920px; z-index: -1" src="<?= get_template_directory_uri() ?>/image/oval-pink.png" alt="">
+<div class="container">
+    <img class="mobile-disabled" style="position:absolute; left: -80px; top: 320px; z-index: -1" src="<?= get_template_directory_uri() ?>/image/oval-pink.png" alt="">
+</div>
 <div class="container">
     <?php
     if ( have_posts() ) {
