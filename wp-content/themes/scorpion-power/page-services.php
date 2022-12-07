@@ -10,7 +10,7 @@ $args = [
 $the_query = new WP_Query( $args );
 ?>
     <div class="container">
-        <img class="mobile-disabled" style="position:absolute; right: -80px; top: 280px; z-index: -1" src="<?= get_template_directory_uri() ?>/image/oval-pink.png" alt="">
+        <img class="mobile-disabled" style="position:absolute; right: -80px; top: 740px; z-index: -1" src="<?= get_template_directory_uri() ?>/image/oval-pink.png" alt="">
         <img class="mobile-disabled" style="position:absolute; left: -80px; top: 1400px; z-index: -1" src="<?= get_template_directory_uri() ?>/image/oval-blue.png" alt="">
     </div>
     <style>
@@ -82,3 +82,4 @@ $the_query = new WP_Query( $args );
 require_once get_template_directory() . '/inc/component/footer-page.php';
 get_footer()
 ?>
+
